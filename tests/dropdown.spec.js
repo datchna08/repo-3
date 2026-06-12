@@ -21,4 +21,5 @@ test("dropDown",async({page})=>{
     const count = await page.locator('#country option').count();
     console.log(count)
     await page.waitForTimeout(3000)
+    gfgf
 })
