@@ -1,0 +1,12 @@
+const{test,expect} = require('@playwright/test')
+const{AuthPage} = require('../pages/AuthPage.js')
+const{HomePage} = require('../pages/DashboardPage.js')
+test('Page Validation',async({page})=>{
+    const loginPage = new AuthPage(page)
+    const dashboardPage = new HomePage(page)
+    await loginPage.openApplication()
+    await loginPage.signIn('Admin','admin123')
+    await dashboardPage.verifyDashboard()
+    await dashboardPage.clickPIM()
+    await expect(page).toHaveURL(/viewEmployeeList/)
+})
